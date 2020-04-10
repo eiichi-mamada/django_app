@@ -3,8 +3,7 @@ from django.contrib.auth.models import User
 
 # Message class
 class Message(models.Model):
-  owner = models.ForeignKey(User, on_delete=models.CASCADE, \
-    related_name='message_owner')
+  owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='message_owner')
   group = models.ForeignKey("Group", on_delete=models.CASCADE)
   content = models.TextField(max_length=1000)
   share_id = models.IntegerField(default=-1)
@@ -23,8 +22,7 @@ class Message(models.Model):
 
 #Group class
 class Group(models.Model):
-  owner = models.ForeignKey(User, on_delete=models.CASCADE, \
-    related_name='group_owner')
+  owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='group_owner')
   title = models.CharField(max_length=100)
 
   def __str__(self):
@@ -32,8 +30,7 @@ class Group(models.Model):
 
 # Friend class
 class Friend(models.Model):
-  owner = models.ForeignKey(User, on_delete=models.CASCADE, \
-    related_name='friend_owner')
+  owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='friend_owner')
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   group = models.ForeignKey(Group, on_delete=models.CASCADE)
 
@@ -42,10 +39,8 @@ class Friend(models.Model):
 
 # Good class
 class Good(models.Model):
-  owner = models.ForeignKey(User, on_delete=models.CASCADE, \
-    related_name='good_owner')
+  owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='good_owner')
   message = models.ForeignKey(Message, on_delete=models.CASCADE)
 
   def __str__(self):
-    return 'good for "' + str(self.message) + '" (by ' + \
-      str(self.owner) + ')'
+    return 'good for "' + str(self.message) + '" (by ' + str(self.owner) + ')'
