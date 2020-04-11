@@ -24,8 +24,7 @@ def create(request):
 		gender = 'gender' in request.POST
 		age = int(request.POST['age'])
 		birth = request.POST['birthday']
-		friend = Friend(name=name, mail=mail, gender= gender,\
-			age=age, birthday=birth)
+		friend = Friend(name=name, mail=mail, gender= gender,	age=age, birthday=birth)
 		friend.save()
 		return redirect(to='/hello')
 	return render(request, 'hello/create.html', params)
